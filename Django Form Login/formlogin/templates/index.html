@@ -1,0 +1,60 @@
+{% extends 'base.html' %} 
+{% block content %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/cerulean/bootstrap.min.css"
+    integrity="sha512-dQLT/B7byn2LjN/DN4zeBKpwGV6qbidV0XiMRWQOL7TGrV7FkZFldkGG+DGMU+CQnMTcRZlUI7GMWt1j6akNew=="
+    crossorigin="anonymous" />
+
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <title>Home Page </title>
+</head>
+
+<body class="jumbotron">
+  <style>
+    body{
+      background-image: url('https://c4.wallpaperflare.com/wallpaper/647/743/807/cartoon-bravest-warriors-wallpaper-preview.jpg');
+    }
+  </style>
+  <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" style="font-family: 'Courier New', monospace;">
+    <div class="container">
+      <a href="../" class="navbar-brand" style="font-size: 30px;"><span style="font-size:21px">💻</span> Kelompok 5 <span style="color: rgb(23, 207, 216);font-size: 14px;"> <strong> Home Page</strong>
+        </span> </a>
+      <a href="#" style="font-size: 13px; text-decoration: none;">NEWS | OKAYGE BLOG | GALLERY | CONTACT </a>
+    </div>
+  </div>
+
+  <br /><br /> 
+
+  <div class="jumbotron" style="text-align: center; margin-top:-50px; font-family: 'Press Start 2P', cursive;">
+      <h1 class="display-5">Django</h1>
+      <h6>Project Ganjil Genap</h6>
+      <br /><br>
+      <form method="get" class="col-md"style="text-align: center;">
+          <input type="text" name="number" placeholder="Masukan angka">
+          <input type="submit" value="Check">
+        </form>
+        <br /><br>
+      {% if number|divisibleby:"2" %}
+        <h4 style="text-align: center;">Bilangan ini genap</h4>
+      {% else %}
+        <h4 style="text-align: center;">Bilangan ini ganjil</h4>
+      {% endif %}
+    <br /> 
+    <hr>   
+    {% if user.is_authenticated %}
+    <h1 style="font-size: 21px; color:black"> Welcome <span style="color:green">{{ user.username }} </span> to Project Ganjil Genap!</h1>
+    <br>
+    <p><a style="font-size: 16px; text-decoration: none; color:red; " href="{% url 'logout' %}"> Log Out</a></p> <!--add ath the end-->
+    {% else %}
+    <h1 style="font-size: 20px; color:red">You are not logged in</h1>
+    <br>
+    <a style="font-size: 16px; text-decoration: none; color:rgb(24, 71, 158);"  href="{% url 'login' %}">Log In</a>
+    {% endif %}
+    {% endblock %}
+   </div>
+ </body>
+</html>
